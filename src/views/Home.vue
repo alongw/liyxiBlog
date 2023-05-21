@@ -5,7 +5,7 @@
                 <h1>创意无限</h1>
                 <h3>无限的创造和想象</h3>
                 <h4>与一群有趣的小伙伴做一些有趣的事情</h4>
-                <el-button class="morebtn" type="primary" round>查看更多
+                <el-button class="morebtn" type="primary" round @click="$router.push('/article')">查看更多
                     <share theme="outline" size="18" fill="#fff" />
                 </el-button>
 

@@ -9,6 +9,7 @@ import About from '@/views/About.vue'
 import Article from '@/views/Article.vue'
 import EditArticle from '@/views/EditArticle.vue'
 import User from '@/views/User.vue'
+import Loginout from '@/views/Loginout.vue'
 
 Vue.use(VueRouter)
 
@@ -52,6 +53,11 @@ const routes = [
     path: '/user',
     name: 'user',
     component: User
+  },
+  {
+    path: '/loginout',
+    name: 'loginout',
+    component: Loginout
   }
   // {
   //   path: '/about',

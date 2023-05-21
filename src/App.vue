@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <isLogin class="islogin"></isLogin>
+    <isLogin class="islogin" v-if="islogini"></isLogin>
     <Nav class="nav"></Nav>
     <router-view></router-view>
     <Under></Under>
@@ -14,8 +14,25 @@ import Under from '@/components/under.vue'
 import isLogin from '@/components/isLogin.vue'
 
 export default {
+  data() {
+    return {
+      islogini: false
+    }
+  },
   components: {
     Nav, Under, isLogin
+  },
+  methods: {
+    refreshloginstatus() {
+      if (localStorage.getItem('token')) {
+        this.islogini = true
+      } else {
+        this.islogini = false
+      }
+    }
+  },
+  created() {
+    this.refreshloginstatus()
   }
 }
 </script>
