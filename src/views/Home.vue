@@ -60,6 +60,12 @@ export default {
   },
   methods: {
     async getProjectList() {
+      if (localStorage.getItem('getProjectTime')) {
+        return (this.projectList = JSON.parse(localStorage.getItem('projectList')).splice(
+          0,
+          3
+        ))
+      }
       const res = await axios.get('/api/public/getProject?re=true').catch((err) => {
         return this.$notify.error({
           title: '错误',

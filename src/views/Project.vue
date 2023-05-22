@@ -30,6 +30,13 @@ export default {
   },
   methods: {
     async getProjectList() {
+      const time = new Date().getTime()
+      if (localStorage.getItem('getProjectTime')) {
+        if (time - localStorage.getItem('getProjectTime') < 600000) {
+          this.fullscreenLoading = false
+          return (this.projectList = JSON.parse(localStorage.getItem('projectList')))
+        }
+      }
       this.fullscreenLoading = false
       const res = await axios.get('/api/public/getProject?re=true').catch((err) => {
         return this.$notify.error({
@@ -44,6 +51,8 @@ export default {
         })
       }
       this.projectList = res.data.data
+      localStorage.setItem('projectList', JSON.stringify(this.projectList))
+      localStorage.setItem('getProjectTime', time)
     }
   },
   created() {
