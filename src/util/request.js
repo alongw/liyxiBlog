@@ -25,7 +25,6 @@ axiosw.interceptors.response.use(
       try {
         localStorage.removeItem('token')
       } catch {}
-      router.push('/login')
     }
 
     return config

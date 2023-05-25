@@ -8,7 +8,6 @@
 </template>
 
 <script>
-
 import Nav from '@/components/nav.vue'
 import Under from '@/components/under.vue'
 import isLogin from '@/components/isLogin.vue'
@@ -20,7 +19,9 @@ export default {
     }
   },
   components: {
-    Nav, Under, isLogin
+    Nav,
+    Under,
+    isLogin
   },
   methods: {
     refreshloginstatus() {
@@ -30,6 +31,7 @@ export default {
         this.islogini = false
       }
     }
+    // 刷新登录状态
   },
   created() {
     this.refreshloginstatus()

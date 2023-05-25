@@ -80,6 +80,9 @@ export default {
                 type: 'success'
               })
               window.localStorage.setItem('token', res2.data.token)
+              const date = new Date().getTime()
+              window.localStorage.setItem('loginTime', date)
+              window.localStorage.setItem('expiredTime', res2.data.expiredTime)
               return this.$router.push('/user')
             }
             this.$notify.error({
@@ -122,6 +125,9 @@ export default {
         type: 'warning'
       })
     }
+  },
+  created() {
+    window.localStorage.clear()
   }
 }
 </script>

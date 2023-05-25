@@ -21,16 +21,16 @@
           </p>
         </li>
         <li>
-          <h4>最新文章</h4>
+          <h4>友情链接</h4>
           <ul>
             <li>
-              <a href="#">第一篇文章</a>
+              <a href="https://www.alongw.cn" target="_blank">阿龙的笔记</a>
             </li>
             <li>
-              <a href="#">第一篇文章</a>
+              <a href="https://cloud.alongw.cn/" target="_blank">幻昼云存储</a>
             </li>
             <li>
-              <a href="#">第一篇文章</a>
+              <a href="https://docs.liyxi.com" target="_blank">LIYXI Docs</a>
             </li>
           </ul>
         </li>

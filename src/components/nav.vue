@@ -50,7 +50,8 @@ export default {
         this.$router.push('/about')
       }
     }
-  }
+  },
+  created() {}
 }
 </script>
 
