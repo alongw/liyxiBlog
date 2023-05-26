@@ -30,12 +30,18 @@
     </div>
     <div class="editipt">
       文章内容：
-      <v-md-editor v-model="articleInfo.content" height="500px"></v-md-editor>
+      <v-md-editor
+        v-model="articleInfo.content"
+        height="500px"
+        ref="textcrea"
+      ></v-md-editor>
     </div>
     <div class="pushbtn">
-      <el-button type="success">发布</el-button>
-      <el-button type="warning" @click="disedit">放弃修改</el-button>
-      <el-button type="danger" class="delete" @click="delbtn">删除文章</el-button>
+      <el-button type="success" @click="pushBtn">发布</el-button>
+      <el-button type="warning" @click="disedit" v-if="!isNewArticle">放弃修改</el-button>
+      <el-button type="danger" class="delete" @click="delbtn" v-if="!isNewArticle"
+        >删除文章</el-button
+      >
     </div>
   </div>
 </template>
@@ -47,11 +53,12 @@ export default {
     return {
       isNewArticle: false,
       articleInfo: {
-        title: '测试标题',
+        title: '新建文章',
         content: '',
         permission: 0,
         usePassword: false,
-        password: ''
+        password: '',
+        description: ''
       },
       permissionList: [
         {
@@ -61,16 +68,16 @@ export default {
         {
           permission: 1,
           msg: '登录用户'
-        },
-        {
-          permission: 4,
-          msg: '仅自己'
         }
       ]
     }
   },
   methods: {
     async getArticleInfo() {
+      if (!this.$route.params.id) {
+        this.isNewArticle = true
+        return
+      }
       const { data: res } = await axios.post('/api/getActicleInfo', {
         aid: this.$route.params.id
       })
@@ -116,6 +123,54 @@ export default {
         })
         .catch(() => {})
     },
+    async pushBtn() {
+      if (this.isNewArticle) {
+        // 是新建文章
+        if (!this.articleInfo.password) {
+          this.articleInfo.password = ''
+        }
+        // 获取简介
+        const getDescription = document.querySelector('.github-markdown-body').innerText
+        const editDescription = getDescription.replace(/[\r\n]/g, '').substring(0, 55)
+        this.articleInfo.description = editDescription
+        // return
+        const { data: res } = await axios.post('/api/addActicle', this.articleInfo)
+        if (res.status == 200) {
+          this.$router.push('/user')
+          return this.$notify({
+            title: '成功',
+            message: '提交成功，请等待审核',
+            type: 'success'
+          })
+        }
+        this.$notify.error({
+          title: '错误',
+          message: '提交失败，请稍后再试'
+        })
+        console.log(res)
+        return
+      }
+      if (!this.articleInfo.password) {
+        this.articleInfo.password = ''
+      }
+      // 获取简介
+      const getDescription = document.querySelector('.github-markdown-body').innerText
+      const editDescription = getDescription.replace(/[\r\n]/g, '').substring(0, 55)
+      this.articleInfo.description = editDescription
+      const { data: res } = await axios.post('/api/editActicle', this.articleInfo)
+      if (res.status == 200) {
+        return this.$notify({
+          title: '成功',
+          message: '修改成功，请等待审核（若退出此界面，在审核完成前将不能再修改）',
+          type: 'success'
+        })
+      }
+      this.$notify.error({
+        title: '错误',
+        message: '修改失败，请稍后再试'
+      })
+      console.log(res)
+    },
     delbtn() {
       this.$confirm('此操作将永久删除该文章, 是否继续?', '提示', {
         confirmButtonText: '确定',
@@ -154,6 +209,9 @@ export default {
     margin: 50px auto 0 auto;
     max-width: 80%;
     // background-color: pink;
+  }
+  li {
+    list-style-type: space-counter;
   }
 
   .article-info {

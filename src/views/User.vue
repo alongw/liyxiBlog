@@ -2,6 +2,12 @@
   <div id="user">
     <div class="title">
       <h1>我的文章</h1>
+      <el-button
+        type="primary"
+        icon="el-icon-plus"
+        circle
+        @click="$router.push('/user/article/add')"
+      ></el-button>
     </div>
     <ul>
       <li v-for="item in userInfo.articleList" :key="item.aid">
@@ -49,7 +55,12 @@ export default {
   max-width: 1000px;
   margin: 50px auto;
   //   background-color: pink;
-
+  .title {
+    display: flex;
+    h1 {
+      margin-right: 15px;
+    }
+  }
   ul {
     margin-top: 20px;
 

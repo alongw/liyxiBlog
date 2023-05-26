@@ -51,6 +51,11 @@ const routes = [
     component: EditArticle
   },
   {
+    path: '/user/article/add',
+    name: 'editarticle',
+    component: EditArticle
+  },
+  {
     path: '/user',
     name: 'user',
     component: User
