@@ -1,7 +1,8 @@
 <template>
   <div id="editarticle">
     <div class="title">
-      <h1>编辑文章</h1>
+      <h1 v-if="this.isNewArticle">发布文章</h1>
+      <h1 v-else>编辑文章</h1>
     </div>
     <div class="article-info">
       文章标题：<el-input v-model="articleInfo.title"></el-input> <br /><br />
