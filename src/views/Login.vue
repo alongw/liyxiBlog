@@ -18,7 +18,7 @@
     </div>
     <div class="myd">
       <el-checkbox v-model="userinput.protocol"
-        >我已认证阅读并同意《LiyxiTeam用户协议》</el-checkbox
+        >我已认真阅读并同意《LiyxiTeam用户协议》</el-checkbox
       >
     </div>
     <div class="btns">
