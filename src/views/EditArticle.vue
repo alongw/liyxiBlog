@@ -241,9 +241,6 @@ export default {
     max-width: 80%;
     // background-color: pink;
   }
-  li {
-    list-style-type: space-counter;
-  }
 
   .article-info {
     margin: 20px auto;
