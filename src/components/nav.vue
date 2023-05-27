@@ -10,6 +10,15 @@
         </el-input>
       </div>
 
+      <div class="phonenav">
+        <hamburger-button theme="outline" size="24" fill="#000" />
+        <ul>
+          <li><a href="javascript:;" @click="gotoHome">主页</a></li>
+          <li><a href="javascript:;" @click="gotoArticleList">文章</a></li>
+          <li><a href="javascript:;" @click="gotoProject">项目</a></li>
+          <li><a href="javascript:;" @click="gotoAbout">关于</a></li>
+        </ul>
+      </div>
       <ul>
         <li><a href="javascript:;" @click="gotoHome">主页</a></li>
         <li><a href="javascript:;" @click="gotoArticleList">文章</a></li>
@@ -21,11 +30,16 @@
 </template>
 
 <script>
+import { HamburgerButton } from '@icon-park/vue'
+import '@icon-park/vue/styles/index.css'
 export default {
   data() {
     return {
       searchWors: ''
     }
+  },
+  components: {
+    HamburgerButton
   },
   methods: {
     gotoHome() {
@@ -79,7 +93,9 @@ export default {
     align-items: center;
     justify-content: right;
   }
-
+  .phonenav {
+    display: none;
+  }
   ul {
     margin-left: 25px;
 
@@ -89,6 +105,59 @@ export default {
       margin: 0 15px;
       color: #43afff;
       font-weight: 700;
+    }
+  }
+}
+
+// 平板尺寸
+@media (max-width: 800px) {
+  .search {
+    display: none;
+  }
+}
+
+// 手机尺寸
+@media (max-width: 530px) {
+  .search {
+    display: none;
+  }
+  .right {
+    position: relative;
+    .phonenav {
+      display: block !important;
+      position: absolute;
+      right: 0;
+      &:hover {
+        ul {
+          display: flex !important;
+        }
+      }
+    }
+
+    ul {
+      display: none !important;
+      position: absolute;
+      top: 0;
+      // right: -50px;
+      right: -40px;
+      // background-color: pink;
+      width: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #e4e4e4;
+      border-radius: 3px;
+      li {
+        background-color: #fff;
+        width: 100%;
+        padding-left: 2em;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        a {
+          display: block;
+          width: 100%;
+        }
+      }
     }
   }
 }

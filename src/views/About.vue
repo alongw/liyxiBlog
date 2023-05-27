@@ -30,4 +30,9 @@ export default {}
     }
   }
 }
+@media (max-width: 620px) {
+  #about {
+    padding: 15px;
+  }
+}
 </style>

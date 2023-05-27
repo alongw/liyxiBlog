@@ -10,9 +10,9 @@
           <h4>联系方式</h4>
           <p>
             <telegram theme="outline" size="24" fill="#000" /><a
-              href="https://proxy.gfwin.icu/alongw.t.me/"
+              href="https://t.liyxi.com/"
               target="_blank"
-              >t.me/alongw</a
+              >Web</a
             >
           </p>
           <p>
@@ -119,6 +119,18 @@ export default {
     &:hover {
       color: lightpink;
       text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  #under {
+    .aboutwe {
+      ul {
+        // flex-wrap: wrap;
+        flex-direction: column;
+        padding: 25px;
+      }
     }
   }
 }

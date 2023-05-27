@@ -268,4 +268,31 @@ export default {
     }
   }
 }
+
+@media (max-width: 600px) {
+  #editarticle {
+    .title {
+      max-width: 90%;
+    }
+    .article-info {
+      max-width: 90%;
+    }
+    .editipt {
+      max-width: 90%;
+    }
+  }
+}
+@media (max-width: 400px) {
+  #editarticle {
+    .title {
+      max-width: 95%;
+    }
+    .article-info {
+      max-width: 95%;
+    }
+    .editipt {
+      max-width: 95%;
+    }
+  }
+}
 </style>

@@ -158,4 +158,20 @@ export default {
     margin: 15px;
   }
 }
+
+@media (max-width: 700px) {
+  #login {
+    padding: 15px;
+    h1 {
+      padding-left: 40px;
+      i {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        color: grey;
+        cursor: pointer;
+      }
+    }
+  }
+}
 </style>
