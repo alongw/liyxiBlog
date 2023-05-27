@@ -59,6 +59,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+li {
+  list-style: none;
+}
 .aboutwe {
   ul {
     display: flex;

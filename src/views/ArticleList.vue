@@ -90,6 +90,9 @@ export default {
 
 <style lang="less" scoped>
 #articlelist {
+  li {
+    list-style: none;
+  }
   .title {
     text-align: center;
     margin: 30px;
