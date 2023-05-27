@@ -35,6 +35,8 @@
         v-model="articleInfo.content"
         height="500px"
         ref="textcrea"
+        :disabled-menus="[]"
+        @upload-image="handleUploadImage"
       ></v-md-editor>
     </div>
     <div class="pushbtn">
@@ -196,6 +198,34 @@ export default {
           })
         })
         .catch(() => {})
+    },
+    handleUploadImage(event, insertImage, files) {
+      const formData = new FormData()
+      formData.append('uimgs', files[0])
+
+      // 发送 POST 请求到后端接口
+      axios
+        .post('/api/uploadimg', formData)
+        .then((response) => {
+          if (response.status == 200) {
+            insertImage({
+              url: response.data.url,
+              desc: response.data.desc
+            })
+
+            return
+          }
+          this.$notify.error({
+            title: '错误',
+            message: '图片上传失败'
+          })
+        })
+        .catch((error) => {
+          this.$notify.error({
+            title: '错误',
+            message: '图片上传失败'
+          })
+        })
     }
   },
   created() {
