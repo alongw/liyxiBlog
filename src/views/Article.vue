@@ -11,7 +11,7 @@
       ></el-input>
       <el-button type="primary" @click="checkPwd">验证</el-button>
     </div>
-    <div class="viewwindow">
+    <div class="viewwindow" v-if="!needpassword.enable">
       <v-md-editor class="view" :value="articleData.content" mode="preview"></v-md-editor>
     </div>
   </div>

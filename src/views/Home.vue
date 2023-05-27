@@ -161,7 +161,8 @@ export default {
 
         img {
           max-width: 100%;
-          margin: 20px;
+          // margin: 20px;
+          padding: 20px;
         }
 
         h3 {
@@ -188,6 +189,28 @@ export default {
       font-size: 35px;
       color: #3fadff;
       margin-bottom: 50px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  #home {
+    .banner {
+      padding: 15px;
+    }
+    .project-list {
+      .project-item {
+        flex-wrap: wrap;
+        .project-item-box {
+          margin: 10px 0;
+        }
+      }
+    }
+    .subbanner {
+      h2 {
+        font-size: 20px;
+        // margin-bottom: 10px;
+      }
     }
   }
 }

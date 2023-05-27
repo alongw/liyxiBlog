@@ -18,7 +18,7 @@
     </div>
     <div class="myd">
       <el-checkbox v-model="userinput.protocol"
-        >我已认证阅读并同意《LiyxiTeam用户协议》</el-checkbox
+        >我已认真阅读并同意《LiyxiTeam用户协议》</el-checkbox
       >
     </div>
     <div class="btns">
@@ -156,6 +156,22 @@ export default {
 
   .myd {
     margin: 15px;
+  }
+}
+
+@media (max-width: 700px) {
+  #login {
+    padding: 15px;
+    h1 {
+      padding-left: 40px;
+      i {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        color: grey;
+        cursor: pointer;
+      }
+    }
   }
 }
 </style>
