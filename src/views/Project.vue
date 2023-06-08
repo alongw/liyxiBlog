@@ -5,6 +5,7 @@
     </div>
     <ul>
       <div class="project-item">
+        <div class="noproject" v-if="!projectList[0]">还没有项目....</div>
         <a :href="item.projectlink" v-for="item in projectList" :key="item.pid">
           <div class="project-item-box">
             <img :src="item.img" alt="" />
@@ -65,6 +66,10 @@ export default {
 <style lang="less" scoped>
 #project {
   margin-top: 50px;
+
+  .noproject {
+    text-align: center;
+  }
 
   .title {
     text-align: center;
