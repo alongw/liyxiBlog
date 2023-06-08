@@ -4,7 +4,7 @@
       <ul>
         <li>
           <h4>关于我们</h4>
-          <h1>LIYXI Team</h1>
+          <h1>LIYXI Blog</h1>
         </li>
         <li>
           <h4>联系方式</h4>
